@@ -33,6 +33,7 @@
     "auth0-lock": "^10.4.0",
     "axios": "^0.16.1",
     "body-parser": "^1.17.1",
+    "express": "^4.15.2",
     "jwt-decode": "^2.1.0",
     "mongoose": "^4.9.6",
     "morgan": "^1.8.1",
