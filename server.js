@@ -38,9 +38,9 @@ if (isDeveloping) {
     res.end();
   });
 } else {
-  app.use(express.static(__dirname + '/'));
+  app.use(express.static(__dirname + '/src'));
   app.get('*', function response(req, res) {
-    res.sendFile(path.join(__dirname, '/index.html'));
+    res.sendFile(path.join(__dirname, 'src/index.html'));
   });
 }
 
