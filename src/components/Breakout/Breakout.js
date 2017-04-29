@@ -4,8 +4,6 @@ import serverCall from '../../utils/helpers.js'
 
 class Breakout extends React.Component {
 
-
-
   //Tutorial at
 	//https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
   run(){

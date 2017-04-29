@@ -8,9 +8,6 @@ const Header = ({ isAuthenticated, profile, error, onLoginClick, onLogoutClick }
       <div className = 'row'>
         <div className = 'col-md-9'>
           <h1><Link to='/'>GameHost</Link></h1>
-          <ul className="list-inline">
-            <li><Link className = 'head' to='/about'>About</Link></li>
-          </ul>
         </div>
         <div className = 'col-md-3'>
           { !isAuthenticated ? (

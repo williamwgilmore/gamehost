@@ -15,7 +15,7 @@
     "boilerplate",
     "starter"
   ],
-  "author": "Amaury Martiny",
+  "author": "Amaury Martiny -- react redux auth0 boilerplate. Will Gilmore added breakout",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amaurymartiny/react-redux-auth0-kit/issues"
