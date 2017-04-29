@@ -58,7 +58,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //MongoDB connection and routes --
 //link to the mongoose server
-mongoose.connect("mongodb://localhost/final");
+mongoose.connect("mongodb://mongodb://admin:passcode@ds141950.mlab.com:41950/heroku_kkh20g2g");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
