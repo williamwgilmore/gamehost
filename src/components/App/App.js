@@ -11,7 +11,13 @@ class App extends React.Component {
     return(
       <div>
         <HeaderContainer />
-        {this.props.children}
+        <div className = 'container'>
+          <div className = 'row'>
+            <div className = 'col-md-12'>
+              {this.props.children}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

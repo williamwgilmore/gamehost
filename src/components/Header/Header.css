@@ -7,3 +7,47 @@
   padding-left: 5px;
   padding-right: 5px;
 }
+
+h1 {
+	margin-top: 0px;
+	text-decoration: none;
+}
+
+.navbar {
+	border: 10px solid lightblue;
+	border-top: 20px solid lightblue;
+	border-bottom: 0px;
+	background-color: lightblue;
+}
+
+.head {
+	text-decoration: none;
+}
+
+button {
+	margin-top: 4px;
+}
+
+a:hover   {
+  /* Applies to links under the pointer */
+  font-weight:      bold;
+  color:            black;
+  text-decoration: none;
+}
+
+a:visited {
+  /* Applies to all visited links */
+  text-decoration:  none;
+}
+
+a:active  {
+  /* Applies to activated links */
+  text-decoration:  none;
+  font-weight:      bold;
+}  
+
+a:link    {
+  /* Applies to all unvisited links */
+  text-decoration:  none;
+  font-weight:      bold;
+} 
