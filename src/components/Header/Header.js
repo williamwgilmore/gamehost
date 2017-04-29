@@ -3,12 +3,11 @@ import { Link } from 'react-router'
 import './Header.css'
 
 const Header = ({ isAuthenticated, profile, error, onLoginClick, onLogoutClick }) =>
-  <div>
+  <div className = 'row'>
     <h1>Games</h1>
     <ul className="list-inline">
       <li><Link to='/'>Home</Link></li>
       <li><Link to='/about'>About</Link></li>
-      <li><Link to='/breakout'>Breakout</Link></li>
     </ul>
     { !isAuthenticated ? (
       <button onClick={onLoginClick}>Login</button>

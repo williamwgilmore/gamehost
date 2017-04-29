@@ -6,7 +6,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
 
-const authService = new AuthService(fw6WhsVLWG0HGoaT7GpiDrNgs4uqrqBx, williamwgilmore.auth0.com)
+const authService = new AuthService('fw6WhsVLWG0HGoaT7GpiDrNgs4uqrqBx', 'williamwgilmore.auth0.com')
 
 // Listen to authenticated event from AuthService and get the profile of the user
 // Done on every page startup
