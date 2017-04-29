@@ -20,8 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
       inject: 'body',
-      filename: 'index.html',
-      favicon: 'src/utils/images/favicon.png'
+      filename: 'index.html'
     }),
     // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurenceOrderPlugin(),
