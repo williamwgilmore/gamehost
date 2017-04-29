@@ -13,7 +13,7 @@ const bodyParser = require("body-parser");
 
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
-const port = (process.env.PORT || 3000); //isDeveloping ? 3000 : process.env.PORT;
+// const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
 if (isDeveloping) {
@@ -93,6 +93,7 @@ app.post("/save", function(req, res) {
 
 //-------------------------------------------
 
+app.set( 'port', ( process.env.PORT || 3000 ));
 
 app.listen(port, '0.0.0.0', function onStart(error) {
   if (error) {
