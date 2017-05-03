@@ -2,6 +2,9 @@ import React from 'react'
 
 import serverCall from '../../utils/helpers.js'
 
+import Chat from '../Chat/Chat.js'
+import HighScore from '../HighScore/HighScore.js'
+
 class Breakout extends React.Component {
 
   //Tutorial at
@@ -16,21 +19,22 @@ class Breakout extends React.Component {
     var bricksDestroyed = 0
 
     function drawScore() {
-      ctx.font = '16px Arial'
+      ctx.font = '18px Arial'
       ctx.fillStyle = '#0095DD'
       ctx.fillText('Score: ' + score, 8, 20)
     }
     function drawLives() {
-      ctx.font = '16px Arial'
+      ctx.font = '18px Arial'
       ctx.fillStyle = '#0095DD'
       ctx.fillText('Lives: ' + lives, canvas.width-65, 20)
     }
 
     function gameOver(){
-      ctx.font = '16px Arial'
+      ctx.font = '20px Arial'
       ctx.fillStyle = 'black'
+      ctx.textAlign = 'center'
       ctx.fillText('Game Over', canvas.width/2, canvas.height/2)
-      ctx.fillText('Final Score: ' + score, canvas.width/2 - 9, (canvas.height/2) + 28)
+      ctx.fillText('Final Score: ' + score, canvas.width/2, (canvas.height/2) + 28)
       var userData = {
         username: 'username',
         score: score
@@ -40,10 +44,11 @@ class Breakout extends React.Component {
     }
 
     function victory(){
-      ctx.font = '16px Arial'
+      ctx.font = '20px Arial'
       ctx.fillStyle = 'black'
+      ctx.textAlign = 'center'
       ctx.fillText('Victory!', canvas.width/2, canvas.height/2)
-      ctx.fillText('Final Score: ' + score, canvas.width/2 - 11, (canvas.height/2) + 28)
+      ctx.fillText('Final Score: ' + score, canvas.width/2, (canvas.height/2) + 28)
     }
 
     //------------------------------Ball-----------------------------------
@@ -59,7 +64,7 @@ class Breakout extends React.Component {
     function drawCircle() {
       ctx.beginPath()
       ctx.arc(x, y, ballRadius, 0, Math.PI*2)
-      ctx.fillStyle = '#0095DD'
+      ctx.fillStyle = '#0066B2'
       ctx.fill()
       ctx.closePath()
     }
@@ -111,7 +116,7 @@ class Breakout extends React.Component {
     function drawPaddle() {
       ctx.beginPath()
       ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight)
-      ctx.fillStyle = '#0095DD'
+      ctx.fillStyle = '#0066B2'
       ctx.fill()
       ctx.closePath()
     }
@@ -207,7 +212,18 @@ class Breakout extends React.Component {
             bricks[c][r].y = brickY
             ctx.beginPath()
             ctx.rect(brickX, brickY, brickWidth, brickHeight)
-            ctx.fillStyle = '#0095DD'
+            switch(r) {
+              case 0:
+                ctx.fillStyle = '#003A65'
+                break
+
+              case 1:
+                ctx.fillStyle = '#005D86'
+                break
+    
+              default:
+                ctx.fillStyle = '#0074C0'
+            } 
             ctx.fill()
             ctx.closePath()
           }
@@ -262,6 +278,8 @@ class Breakout extends React.Component {
       checkHeight()
       collisionDetection()
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = ' #f2f2f2'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
       drawCircle()
       drawPaddle()
       drawBricks()
@@ -277,22 +295,35 @@ class Breakout extends React.Component {
 
   render() {
     return (
-      <div className = 'row'>
-        <div className = 'col-md-12'>
-          <button onClick={this.run}>Play</button>
-          <canvas id='myCanvas' width='540' height='400'></canvas>
+      <div>
+        <div className = 'row'>
+          <div className = 'col-md-9'>
+            <canvas id='myCanvas' width='540' height='400'></canvas>
+          </div>
+          <div className = 'col-md-3'>
+            <Chat />
+          </div>
+        </div>
+        <div className = 'row'>
+          <div className = 'col-md-6'>
+            <button onClick={this.run}>Play</button>
+            <p>Use the arrow keys or the mouse to move the paddle. Don't let the ball touch the bottom of the screen! Keep it alive until all of the bricks have been destroyed.</p>
+          </div>
+          <div className = 'col-md-offset-3 col-md-3'>
+            <HighScore />
+          </div>
         </div>
       </div>
     )
   }
 }
 
-Breakout.propTypes = {
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  profile: React.PropTypes.object,
-  error: React.PropTypes.string,
-  onLoginClick: React.PropTypes.func.isRequired,
-  onLogoutClick: React.PropTypes.func.isRequired
-}
+// Breakout.propTypes = {
+//   isAuthenticated: React.PropTypes.bool.isRequired,
+//   profile: React.PropTypes.object,
+//   error: React.PropTypes.string,
+//   onLoginClick: React.PropTypes.func.isRequired,
+//   onLogoutClick: React.PropTypes.func.isRequired
+// }
 
 export default Breakout

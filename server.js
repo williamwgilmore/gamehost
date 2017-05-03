@@ -71,7 +71,19 @@ db.once("open", function() {
 // Require mongodb article schema
 var User = require("./src/models/User.js");
 
-app.post("/save", function(req, res) {
+app.get('/highscores', function(req, res){
+
+  Users.find({}).exec(function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(data);
+    }
+  });
+
+});
+
+app.post('/save', function(req, res) {
   // Create a new note and pass the req.body to the entry
   var user = new User(req.body);
 
