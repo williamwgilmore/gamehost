@@ -71,13 +71,14 @@ db.once("open", function() {
 // Require mongodb article schema
 var User = require("./src/models/User.js");
 
-app.get('/highscores', function(req, res){
+app.post('/findScore', function(req, res){
 
-  Users.find({}).exec(function(error, data) {
+  User.find({}).sort({score: -1}).limit(10).exec(function(error, data) {
     if (error) {
       res.send(error);
     } else {
       res.send(data);
+      console.log(data);
     }
   });
 

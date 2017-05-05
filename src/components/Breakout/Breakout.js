@@ -6,6 +6,34 @@ import Chat from '../Chat/Chat.js'
 import HighScore from '../HighScore/HighScore.js'
 
 class Breakout extends React.Component {
+  constructor(){
+    super()
+    this.state = { score: [], count: 0}
+    this.refreshScore = this.refreshScore.bind(this)
+  }
+
+  componentWillMount(){
+    this.refreshScore()
+  }
+
+  refreshScore(){
+    serverCall.getScore()
+      .then(function(response){
+        this.setState({score: response.data})
+        console.log(response.data)
+      }.bind(this))
+  }
+
+  saveScore(score){
+    var userData = {
+      username: 'Player',
+      score: score
+    }
+    serverCall.saveScore(userData).then(function(response){
+      console.log('Score Uploaded' + response)
+      this.refreshScore()
+    }.bind(this))
+  }
 
   //Tutorial at
 	//https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
@@ -21,7 +49,7 @@ class Breakout extends React.Component {
     function drawScore() {
       ctx.font = '18px Arial'
       ctx.fillStyle = '#0095DD'
-      ctx.fillText('Score: ' + score, 8, 20)
+      ctx.fillText('Score: ' + score, canvas.width-525, 20)
     }
     function drawLives() {
       ctx.font = '18px Arial'
@@ -29,26 +57,22 @@ class Breakout extends React.Component {
       ctx.fillText('Lives: ' + lives, canvas.width-65, 20)
     }
 
-    function gameOver(){
+    var gameOver = () => {
       ctx.font = '20px Arial'
       ctx.fillStyle = 'black'
       ctx.textAlign = 'center'
       ctx.fillText('Game Over', canvas.width/2, canvas.height/2)
       ctx.fillText('Final Score: ' + score, canvas.width/2, (canvas.height/2) + 28)
-      var userData = {
-        username: 'username',
-        score: score
-      }
-      serverCall.saveScore(userData).then(response => console.log(response))
-    .catch(errors => console.log(errors))
+      this.saveScore(score)
     }
 
-    function victory(){
+    var victory = () => {
       ctx.font = '20px Arial'
       ctx.fillStyle = 'black'
       ctx.textAlign = 'center'
       ctx.fillText('Victory!', canvas.width/2, canvas.height/2)
       ctx.fillText('Final Score: ' + score, canvas.width/2, (canvas.height/2) + 28)
+      this.saveScore(score)
     }
 
     //------------------------------Ball-----------------------------------
@@ -306,11 +330,11 @@ class Breakout extends React.Component {
         </div>
         <div className = 'row'>
           <div className = 'col-md-6'>
-            <button onClick={this.run}>Play</button>
+            <button onClick={this.run.bind(this)}>Play</button>
             <p>Use the arrow keys or the mouse to move the paddle. Don't let the ball touch the bottom of the screen! Keep it alive until all of the bricks have been destroyed.</p>
           </div>
           <div className = 'col-md-offset-3 col-md-3'>
-            <HighScore />
+            <HighScore score={this.state.score} />
           </div>
         </div>
       </div>
