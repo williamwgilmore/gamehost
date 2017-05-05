@@ -78,7 +78,7 @@ app.post('/findScore', function(req, res){
       res.send(error);
     } else {
       res.send(data);
-      console.log(data);
+      console.log('High scores were sent');
     }
   });
 
@@ -87,10 +87,6 @@ app.post('/findScore', function(req, res){
 app.post('/save', function(req, res) {
   // Create a new note and pass the req.body to the entry
   var user = new User(req.body);
-
-  console.log('req ' + req);
-
-  console.log('User ' + user);
 
   // And save the new note the db
   user.save(function(error, doc) {

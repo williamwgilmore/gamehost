@@ -1,14 +1,27 @@
 import React from 'react'
 // import { Link } from 'react-router'
-// import './Header.css'
+// import './Chat.css'
+
+// import serverCall from '../../utils/helpers.js'
 
 // const Chat = ({ isAuthenticated, profile, error, onLoginClick, onLogoutClick }) =>
-const Chat = () => 
-  <div>
-    Chat
-  </div>
+class Chat extends React.Component {
+  constructor(){
+    super()
+    this.state = {message: []}
+  }
 
-// Chat.propTypes = {
+  render(){
+    return(
+      <div>
+        <p>Thank you</p>
+      </div>
+    )
+  }
+}
+
+// HighScore.propTypes = {
+//   score: React.PropTypes.array
 //   isAuthenticated: React.PropTypes.bool.isRequired,
 //   profile: React.PropTypes.object,
 //   error: React.PropTypes.string,

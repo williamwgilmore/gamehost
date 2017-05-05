@@ -8,6 +8,14 @@ var helpers = {
 
   getScore: function(){
     return axios.post('/findScore')
+  },
+
+  saveMessage: function(userData) {
+    return axios.post('/saveMessage', userData)
+  },
+
+  getMessage: function(){
+    return axios.post('/getMessage')
   }
 }
 

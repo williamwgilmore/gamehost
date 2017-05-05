@@ -8,7 +8,7 @@ import HighScore from '../HighScore/HighScore.js'
 class Breakout extends React.Component {
   constructor(){
     super()
-    this.state = { score: [], count: 0}
+    this.state = { score: []}
     this.refreshScore = this.refreshScore.bind(this)
   }
 

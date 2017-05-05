@@ -10,8 +10,6 @@ class HighScore extends React.Component {
     super(props)
   }
 
-  //Tutorial at
-	//https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript
   render(){
     return(
       <div>

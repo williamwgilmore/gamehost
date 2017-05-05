@@ -1,5 +1,10 @@
+.table tr:nth-child(even) {
+    background: #ebf6f9;
+    margin: 0px;
+}
+
 .table tr:nth-child(odd) {
-    background: lightblue;
+    background: #e6ffff;
     margin: 0px;
 }
 
@@ -9,4 +14,5 @@
 
 .title {
 	font-size: 16px;
+	background: #d8ecf3;
 }
