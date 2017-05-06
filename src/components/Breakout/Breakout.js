@@ -20,7 +20,6 @@ class Breakout extends React.Component {
     serverCall.getScore()
       .then(function(response){
         this.setState({score: response.data})
-        console.log(response.data)
       }.bind(this))
   }
 
@@ -321,20 +320,20 @@ class Breakout extends React.Component {
     return (
       <div>
         <div className = 'row'>
-          <div className = 'col-md-9'>
+          <div className = 'col-md-6'>
             <canvas id='myCanvas' width='540' height='400'></canvas>
           </div>
           <div className = 'col-md-3'>
             <Chat />
           </div>
+          <div className = 'col-md-3'>
+            <HighScore score={this.state.score} />
+          </div>
         </div>
         <div className = 'row'>
           <div className = 'col-md-6'>
-            <button onClick={this.run.bind(this)}>Play</button>
+            <button className="btn" onClick={this.run.bind(this)}>Play</button>
             <p>Use the arrow keys or the mouse to move the paddle. Don't let the ball touch the bottom of the screen! Keep it alive until all of the bricks have been destroyed.</p>
-          </div>
-          <div className = 'col-md-offset-3 col-md-3'>
-            <HighScore score={this.state.score} />
           </div>
         </div>
       </div>

@@ -70,10 +70,11 @@ db.once("open", function() {
 
 // Require mongodb article schema
 var User = require("./src/models/User.js");
+var Chat = require('./src/models/Chat.js');
 
 app.post('/findScore', function(req, res){
 
-  User.find({}).sort({score: -1}).limit(10).exec(function(error, data) {
+  User.find({}).sort({score: -1}).limit(15).exec(function(error, data) {
     if (error) {
       res.send(error);
     } else {
@@ -90,6 +91,34 @@ app.post('/save', function(req, res) {
 
   // And save the new note the db
   user.save(function(error, doc) {
+    // Log any errors
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
+app.post('/getMessage', function(req, res){
+
+  Chat.find({}).exec(function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(data);
+      console.log('Messages were sent');
+    }
+  });
+
+});
+
+app.post('/saveMessage', function(req, res) {
+  // Create a new note and pass the req.body to the entry
+  var chat = new Chat(req.body);
+
+  // And save the new note the db
+  chat.save(function(error, doc) {
     // Log any errors
     if (error) {
       console.log(error);

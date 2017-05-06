@@ -11,12 +11,12 @@ const Header = ({ isAuthenticated, profile, error, onLoginClick, onLogoutClick }
         </div>
         <div className = 'col-md-3'>
           { !isAuthenticated ? (
-            <button onClick={onLoginClick}>Login</button>
+            <button className ='btn' onClick={onLoginClick}>Login</button>
           ) : (
             <div>
               <img src={profile.picture} height="40px" />
               <span>   Welcome, {profile.nickname}   </span>
-              <button onClick={onLogoutClick}>Logout</button>
+              <button className = 'btn' onClick={onLogoutClick}>Logout</button>
             </div>
           )}
           { error &&

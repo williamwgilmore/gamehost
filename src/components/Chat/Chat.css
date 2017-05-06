@@ -1,0 +1,25 @@
+#chat{
+	height: 400px;
+	overflow-y: auto;
+}
+
+#chat p:nth-child(even) {
+    background: white;
+    border: solid 4px white;
+    margin: 0px;
+}
+
+#chat p:nth-child(odd) {
+    background: #eff7f9;
+    border: solid 4px #eff7f9;
+    margin: 0px;
+}
+
+.chatTitle {
+	font-size: 16px;
+	background: #d8ecf3;
+	font-weight: bold;
+	border: solid 8px #d8ecf3;
+	padding: 3px;
+	margin: 0px 0px 1px 0px;
+}

@@ -15,11 +15,12 @@ class HighScore extends React.Component {
       <div>
         <table className = 'table'>
           <thead>
-            <td className= 'title text-center' colSpan= '2'>High Scores</td>
+            <tr>
+              <th className= 'title text-center' colSpan= '2'>High Scores</th>
+            </tr>
           </thead>
           <tbody>
             {this.props.score.map(function(score){
-              console.log(score)
               return (
                 <tr key = {score._id}><td>{score.username}</td><td>{score.score}</td></tr>
               )
